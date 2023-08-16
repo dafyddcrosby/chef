@@ -3,7 +3,7 @@
 # If you wish to build the chef-infra-client Docker image, you do not need to use this file.
 # You can build the Docker image for yourself by simply running:
 #
-#   docker build .
+#   docker build 
 #
 # For more information on how this file is used, please check out the Chef Expeditor docs:
 #   https://expeditor.chef.io/docs/pipelines/docker/
