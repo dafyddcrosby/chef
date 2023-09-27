@@ -2,7 +2,7 @@
 
 Update `knife bootstrap` to use `train` as its backend via `chef-core`, and integrate Windows bootstrap support.
 
-## Motivation
+## Motivationrstarsoti,arsoitmasrotmrsoit
 
     As a Chef User,
     I want to be able to bootstrap a system without logging secure data on that system
