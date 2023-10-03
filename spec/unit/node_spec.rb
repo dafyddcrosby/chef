@@ -817,6 +817,64 @@ describe Chef::Node do
         expect(node.read("bar", "foo")).to eql(nil)
       end
 
+      it "should not barf on node.read 1 " do
+        node.default["nginx"]["ports"] = {"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}}
+        expect(node.read("nginx").dup["ports"]).to eql({"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}})
+        expect(node.read("nginx")["ports"]).to eql({"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}})
+        expect(node.read("nginx", "ports")).to eql({"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}})
+        expect(node["nginx"]["ports"]).to eql({"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}})
+        expect(node["nginx"].dup["ports"]).to eql({"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}})
+      end
+
+      it "should not barf on node.read 2" do
+        node.default["nginx"] = {"ports" => {"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}}}
+        expect(node.read("nginx").dup["ports"]).to eql({"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}})
+        expect(node.read("nginx")["ports"]).to eql({"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}})
+        expect(node.read("nginx", "ports")).to eql({"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}})
+        expect(node["nginx"]["ports"]).to eql({"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}})
+        expect(node["nginx"].dup["ports"]).to eql({"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}})
+      end
+
+      it "should not barf on node.read 4" do
+        node.default = {"nginx" => {"ports" => {"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}}}}
+        expect(node.read("nginx").dup["ports"]).to eql({"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}})
+        expect(node.read("nginx")["ports"]).to eql({"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}})
+        expect(node.read("nginx", "ports")).to eql({"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}})
+        expect(node["nginx"]["ports"]).to eql({"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}})
+        expect(node["nginx"].dup["ports"]).to eql({"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}})
+      end
+
+      it "should not barf on node.read 3" do
+        node.default["bar"] = {"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}}
+        node.default["nginx"]["ports"] = node["bar"]
+        expect(node.read("nginx").dup["ports"]).to eql({"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}})
+        expect(node.read("nginx")["ports"]).to eql({"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}})
+        expect(node.read("nginx", "ports")).to eql({"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}})
+        expect(node["nginx"]["ports"]).to eql({"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}})
+        expect(node["nginx"].dup["ports"]).to eql({"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}})
+      end
+      it "should not barf on node.read 5" do
+        node.default["bar"] = {"ports"=>{"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}}}
+        node.default["nginx"] = node["bar"]
+        expect(node.read("nginx").dup["ports"]).to eql({"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}})
+        expect(node.read("nginx")["ports"]).to eql({"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}})
+        expect(node.read("nginx", "ports")).to eql({"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}})
+        expect(node["nginx"]["ports"]).to eql({"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}})
+        expect(node["nginx"].dup["ports"]).to eql({"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}})
+      end
+      it "should not barf on node.read 6" do
+        node.default["foo"]["bar"] = {"ports"=>{"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}}}
+        node.default["nginx"] = node["foo"]["bar"]
+        expect(node.read("nginx").dup["ports"]).to eql({"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}})
+        expect(node.read("nginx")["ports"]).to eql({"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}})
+        expect(node.read("nginx", "ports")).to eql({"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}})
+        expect(node["nginx"]["ports"]).to eql({"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}})
+        expect(node["nginx"].dup["ports"]).to eql({"http"=>{"port"=>8000, "enabled"=>true}, "https"=>{"port"=>443, "enabled"=>false}})
+        expect( node["foo"].class ).to eql(Chef::Node::ImmutableMash)
+        expect( node["foo"]["bar"].class ).to eql(Chef::Node::ImmutableMash)
+      end
+
+
       it "should have a read! function" do
         node.override["foo"]["bar"] = "baz"
         expect(node.read!("foo", "bar")).to eql("baz")
