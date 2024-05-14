@@ -60,10 +60,12 @@ module ChefConfig
       trailing_slashes_regex = /[#{path_separator_regex}]+$/.freeze
       leading_slashes_regex = /^[#{path_separator_regex}]+/.freeze
 
-      args.flatten.inject do |joined_path, component|
+      args.flatten!
+      args.inject do |joined_path, component|
         joined_path = joined_path.sub(trailing_slashes_regex, "")
         component = component.sub(leading_slashes_regex, "")
-        joined_path + "#{path_separator(windows: windows)}#{component}"
+        joined_path.concat("#{path_separator(windows: windows)}#{component}")
+        joined_path
       end
     end
 
