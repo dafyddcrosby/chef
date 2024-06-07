@@ -1,17 +1,37 @@
 <!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 This changelog lists individual merged pull requests to Chef Infra Client and geared towards developers. For a list of significant changes per release see the [Chef Infra Client Release Notes](https://docs.chef.io/release_notes_client/).
 
-<!-- latest_release 18.4.36 -->
-## [v18.4.36](https://github.com/chef/chef/tree/v18.4.36) (2024-04-16)
+<!-- latest_release 18.4.56 -->
+## [v18.4.56](https://github.com/chef/chef/tree/v18.4.56) (2024-06-07)
 
 #### Merged Pull Requests
-- Revert &quot;Add missing `description` to windows_service load_current_resource for idempotent check to be successful&quot; [#14334](https://github.com/chef/chef/pull/14334) ([tpowell-progress](https://github.com/tpowell-progress))
+- Remove extra asterisk [#14429](https://github.com/chef/chef/pull/14429) ([IanMadd](https://github.com/IanMadd))
 <!-- latest_release -->
 
 <!-- release_rollup since=18.4.12 -->
 ### Changes not yet released to stable
 
 #### Merged Pull Requests
+- Remove extra asterisk [#14429](https://github.com/chef/chef/pull/14429) ([IanMadd](https://github.com/IanMadd)) <!-- 18.4.56 -->
+- conservative update of vault [#14423](https://github.com/chef/chef/pull/14423) ([tpowell-progress](https://github.com/tpowell-progress)) <!-- 18.4.55 -->
+- [CookbookVersionLoader#load_all_files] Do directory test after name check [#14349](https://github.com/chef/chef/pull/14349) ([dafyddcrosby](https://github.com/dafyddcrosby)) <!-- 18.4.54 -->
+- [Immutablize#convert_value] return already frozen String objects [#14226](https://github.com/chef/chef/pull/14226) ([dafyddcrosby](https://github.com/dafyddcrosby)) <!-- 18.4.53 -->
+- update latest license_scout version [#14413](https://github.com/chef/chef/pull/14413) ([muthuja](https://github.com/muthuja)) <!-- 18.4.52 -->
+- Revert &quot;zypper_package: Fix idempotency issue&quot; [#14408](https://github.com/chef/chef/pull/14408) ([johnmccrae](https://github.com/johnmccrae)) <!-- 18.4.51 -->
+- [PathHelper#join] Reduce allocations [#14385](https://github.com/chef/chef/pull/14385) ([dafyddcrosby](https://github.com/dafyddcrosby)) <!-- 18.4.50 -->
+- [CookbookSynchronizer#ensure_cookbook_paths] Move file_cache_path method out of loop [#14391](https://github.com/chef/chef/pull/14391) ([dafyddcrosby](https://github.com/dafyddcrosby)) <!-- 18.4.49 -->
+- [StateTracking] Do in-place compact [#14390](https://github.com/chef/chef/pull/14390) ([dafyddcrosby](https://github.com/dafyddcrosby)) <!-- 18.4.48 -->
+- [CookbookManifest#files_for] Avoid unnecessary allocations [#14388](https://github.com/chef/chef/pull/14388) ([dafyddcrosby](https://github.com/dafyddcrosby)) <!-- 18.4.47 -->
+- update kitchen-tests platforms [#14395](https://github.com/chef/chef/pull/14395) ([Stromweld](https://github.com/Stromweld)) <!-- 18.4.46 -->
+- [Knife#pattern_arg_from] Use start_with? [#14384](https://github.com/chef/chef/pull/14384) ([dafyddcrosby](https://github.com/dafyddcrosby)) <!-- 18.4.45 -->
+- Move Ubuntu 18.04 kitchen test to Virtualbox + Vagrant  [#14392](https://github.com/chef/chef/pull/14392) ([tpowell-progress](https://github.com/tpowell-progress)) <!-- 18.4.44 -->
+- Test FIPS MD5 [#14387](https://github.com/chef/chef/pull/14387) ([tpowell-progress](https://github.com/tpowell-progress)) <!-- 18.4.43 -->
+- Remove EOL Warning [#14366](https://github.com/chef/chef/pull/14366) ([Stromweld](https://github.com/Stromweld)) <!-- 18.4.42 -->
+- EC and modulo length update for OpenSSL 3 compatibility [#14354](https://github.com/chef/chef/pull/14354) ([tpowell-progress](https://github.com/tpowell-progress)) <!-- 18.4.41 -->
+- Bump pedump from 0.6.6 to 0.6.9 in /omnibus [#14344](https://github.com/chef/chef/pull/14344) ([dependabot[bot]](https://github.com/dependabot[bot])) <!-- 18.4.40 -->
+- hyperv added to virtualization helper [#14359](https://github.com/chef/chef/pull/14359) ([snohio](https://github.com/snohio)) <!-- 18.4.39 -->
+- Disable merging of chocolatey searches [#14327](https://github.com/chef/chef/pull/14327) ([jaymzjulian](https://github.com/jaymzjulian)) <!-- 18.4.38 -->
+- Chef 10065 - Support new IBM hosts [#14321](https://github.com/chef/chef/pull/14321) ([poorndm](https://github.com/poorndm)) <!-- 18.4.37 -->
 - Revert &quot;Add missing `description` to windows_service load_current_resource for idempotent check to be successful&quot; [#14334](https://github.com/chef/chef/pull/14334) ([tpowell-progress](https://github.com/tpowell-progress)) <!-- 18.4.36 -->
 - Add note about adding account rights not taking immediate effect. [#14325](https://github.com/chef/chef/pull/14325) ([tpowell-progress](https://github.com/tpowell-progress)) <!-- 18.4.35 -->
 - [trivial] add missing markdown fence [#14326](https://github.com/chef/chef/pull/14326) ([dafyddcrosby](https://github.com/dafyddcrosby)) <!-- 18.4.34 -->
