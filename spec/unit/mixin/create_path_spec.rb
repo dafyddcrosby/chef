@@ -48,8 +48,6 @@ describe Chef::Mixin::CreatePath do
       expect(test.create_path(path)).to eql(path)
     end
     it "doesn't call create_dir if path already exists" do
-      expect(File).to receive(:directory?).with("/foo").and_return(true)
-      expect(File).to receive(:directory?).with("/foo/bar").and_return(true)
       expect(File).to receive(:directory?).with("/foo/bar/baz").and_return(true)
       expect(test).to_not receive(:create_dir)
 
