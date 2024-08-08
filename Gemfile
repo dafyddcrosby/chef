@@ -58,10 +58,10 @@ group(:development, :test) do
   gem "fauxhai-ng" # for chef-utils gem
 end
 
-gem "chefstyle"
+gem "cookstyle", ">= 7.32.8"
 # group(:chefstyle) do
 #   # for testing new chefstyle rules
-#   gem "chefstyle", git: "https://github.com/chef/chefstyle.git", branch: "main"
+#   gem "cookstyle", git: "https://github.com/chef/cookstyle.git", branch: "main"
 # end
 
 instance_eval(ENV["GEMFILE_MOD"]) if ENV["GEMFILE_MOD"]
